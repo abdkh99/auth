@@ -1,24 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Authentication System
+
+A modern authentication system built with Next.js 14, NextAuth.js, Prisma, and Tailwind CSS.
+
+## Features
+
+- User registration and login
+- Protected routes
+- User dashboard
+- Session management
+- Modern UI with Tailwind CSS
+- TypeScript support
+- SQLite database with Prisma ORM
+
+## Prerequisites
+
+- Node.js 18+ and npm
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd auth-system
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory with the following content:
+
+```env
+DATABASE_URL="file:./dev.db"
+NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+4. Initialize the database:
+
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/app` - Next.js application routes and API endpoints
+- `/src/lib` - Utility functions and configurations
+- `/prisma` - Database schema and migrations
+- `/src/components` - Reusable React components
+
+## Available Routes
+
+- `/` - Home page with links to login and registration
+- `/login` - User login page
+- `/register` - User registration page
+- `/dashboard` - Protected dashboard page (requires authentication)
+
+## Technologies Used
+
+- [Next.js 14](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Prisma](https://www.prisma.io/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SQLite](https://www.sqlite.org/)
 
 ## Learn More
 
