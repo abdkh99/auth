@@ -73,7 +73,7 @@ export default function DashboardPage() {
                         Role
                       </h4>
                       <p className="mt-1 text-lg font-semibold text-gray-900">
-                        {session?.user?.role}
+                        User
                       </p>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow">
