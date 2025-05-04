@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -18,12 +20,12 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-4">
               <li>
-                <a
+                <Link
                   href="/"
                   className="text-base text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a

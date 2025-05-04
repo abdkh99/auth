@@ -49,7 +49,6 @@ export function Button({
         <LoadingSpinner
           size={size === "lg" ? "md" : "sm"}
           variant={variant === "outline" ? "primary" : "white"}
-          className="mr-2"
         />
       )}
       {children}

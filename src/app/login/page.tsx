@@ -8,13 +8,11 @@ import { Input } from "@/components/ui/Input";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
@@ -28,14 +26,13 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        setError("Invalid email or password");
         return;
       }
 
       router.push("/dashboard");
       router.refresh();
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      // Handle error
     } finally {
       setIsLoading(false);
     }
@@ -79,12 +76,6 @@ export default function LoginPage() {
               placeholder="Enter your password"
             />
           </div>
-
-          {error && (
-            <div className="text-sm text-red-500 dark:text-red-400 text-center">
-              {error}
-            </div>
-          )}
 
           <div>
             <button
