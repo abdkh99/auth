@@ -1,22 +1,12 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-
 export default function ProfilePage() {
-  const { data: session, status } = useSession();
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  if (status === "unauthenticated") {
-    redirect("/login");
-  }
+  // بيانات وهمية
+  const user = {
+    name: "John Doe",
+    email: "john@example.com",
+    registrationDate: new Date().toLocaleDateString("en-US"),
+  };
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -38,7 +28,7 @@ export default function ProfilePage() {
                   Name
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                  {session?.user?.name || "Not set"}
+                  {user.name}
                 </dd>
               </div>
               <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
@@ -46,7 +36,7 @@ export default function ProfilePage() {
                   Email
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                  {session?.user?.email || "Not set"}
+                  {user.email}
                 </dd>
               </div>
               <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
@@ -54,7 +44,7 @@ export default function ProfilePage() {
                   Registration Date
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                  {new Date().toLocaleDateString("en-US")}
+                  {user.registrationDate}
                 </dd>
               </div>
             </dl>

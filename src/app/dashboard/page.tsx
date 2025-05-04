@@ -1,28 +1,15 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/Button";
-import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status, router]);
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-white">
-        <LoadingSpinner size="lg" />
-      </div>
-    );
-  }
+  // بيانات وهمية
+  const user = {
+    name: "John Doe",
+    email: "john@example.com",
+    role: "User",
+    status: "Active",
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
@@ -35,7 +22,7 @@ export default function DashboardPage() {
               </h1>
             </div>
             <div className="flex items-center">
-              <Button onClick={() => signOut()} variant="outline" size="sm">
+              <Button onClick={() => {}} variant="outline" size="sm">
                 Sign out
               </Button>
             </div>
@@ -48,23 +35,21 @@ export default function DashboardPage() {
           <div className="bg-white shadow-lg rounded-lg p-6 transform transition-all hover:scale-[1.01] hover:shadow-xl">
             <div className="space-y-6">
               <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Welcome, {session?.user?.name || "User"}!
+                Welcome, {user.name}!
               </h2>
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                       <div className="h-12 w-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold">
-                        {session?.user?.name?.[0]?.toUpperCase() || "U"}
+                        {user.name[0].toUpperCase()}
                       </div>
                     </div>
                     <div>
                       <h3 className="text-lg font-medium text-gray-900">
-                        {session?.user?.name || "User"}
+                        {user.name}
                       </h3>
-                      <p className="text-sm text-gray-500">
-                        {session?.user?.email}
-                      </p>
+                      <p className="text-sm text-gray-500">{user.email}</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -73,7 +58,7 @@ export default function DashboardPage() {
                         Role
                       </h4>
                       <p className="mt-1 text-lg font-semibold text-gray-900">
-                        User
+                        {user.role}
                       </p>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow">
@@ -81,7 +66,7 @@ export default function DashboardPage() {
                         Status
                       </h4>
                       <p className="mt-1 text-lg font-semibold text-green-600">
-                        Active
+                        {user.status}
                       </p>
                     </div>
                   </div>
